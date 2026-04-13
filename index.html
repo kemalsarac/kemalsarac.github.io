@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kemal Saraç | Mobile & SaaS Developer</title>
+  <title>Kemal Saraç | Mobile Developer</title>
   <meta
     name="description"
-    content="Kemal Saraç kişisel portfolyo sitesi. Flutter, React Native, SaaS ürünleri, mobil uygulamalar ve kullanıcı odaklı dijital ürünler."
+    content="Kemal Saraç kişisel portfolyo sitesi. Flutter, React Native, mobil uygulamalar ve kullanıcı odaklı dijital ürünler."
   />
   <style>
     :root {
@@ -27,6 +27,20 @@
       --max: 1180px;
     }
 
+    body.dark {
+      --bg: #090b12;
+      --surface: rgba(17, 22, 32, 0.88);
+      --surface-strong: #111620;
+      --text: #f3f6fb;
+      --muted: #a6b3c2;
+      --line: rgba(255, 255, 255, 0.08);
+      --primary: #f3f6fb;
+      --primary-soft: #121a25;
+      --accent: #85b8ea;
+      --accent-2: #4f8cc9;
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -43,6 +57,14 @@
         radial-gradient(circle at top right, rgba(79, 140, 201, 0.14), transparent 25%),
         linear-gradient(180deg, #f8faff 0%, var(--bg) 100%);
       color: var(--text);
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    body.dark {
+      background:
+        radial-gradient(circle at top left, rgba(133, 184, 234, 0.08), transparent 28%),
+        radial-gradient(circle at top right, rgba(79, 140, 201, 0.06), transparent 25%),
+        linear-gradient(180deg, #0d1118 0%, var(--bg) 100%);
     }
 
     a {
@@ -92,6 +114,12 @@
       font-size: 14px;
       font-weight: 700;
       box-shadow: 0 10px 30px rgba(28, 48, 65, 0.06);
+      transition: 0.25s ease;
+    }
+
+    body.dark .pill {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.08);
     }
 
     .topbar {
@@ -99,8 +127,13 @@
       top: 0;
       z-index: 30;
       backdrop-filter: blur(14px);
-      background: rgba(245, 247, 251, 0.78);
-      border-bottom: 1px solid rgba(28, 48, 65, 0.06);
+      background: rgba(255, 255, 255, 0.55);
+      border-bottom: 1px solid var(--line);
+      transition: 0.25s ease;
+    }
+
+    body.dark .topbar {
+      background: rgba(9, 11, 18, 0.72);
     }
 
     .nav {
@@ -139,6 +172,33 @@
       color: var(--primary);
     }
 
+    .theme-toggle {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      min-width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: rgba(28, 48, 65, 0.06);
+      color: var(--primary);
+      font-size: 18px;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+      background: rgba(28, 48, 65, 0.12);
+    }
+
+    body.dark .theme-toggle {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    body.dark .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
     .hero {
       padding: 52px 0 74px;
     }
@@ -161,6 +221,17 @@
       border: 1px solid rgba(255, 255, 255, 0.55);
       box-shadow: var(--shadow);
       backdrop-filter: blur(16px);
+      transition: 0.25s ease;
+    }
+
+    body.dark .hero-card,
+    body.dark .visual-card,
+    body.dark .about-card,
+    body.dark .project-card,
+    body.dark .contact-card,
+    body.dark .fact-card,
+    body.dark .timeline-card {
+      border-color: rgba(255, 255, 255, 0.06);
     }
 
     .hero-card {
@@ -183,6 +254,10 @@
     .hero-title .light {
       font-weight: 600;
       color: rgba(28, 48, 65, 0.62);
+    }
+
+    body.dark .hero-title .light {
+      color: rgba(243, 246, 251, 0.64);
     }
 
     .hero-subtitle {
@@ -218,7 +293,7 @@
       padding: 0 22px;
       border-radius: 14px;
       font-weight: 800;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
     }
 
     .btn:hover {
@@ -231,10 +306,22 @@
       box-shadow: 0 14px 30px rgba(28, 48, 65, 0.22);
     }
 
+    body.dark .btn-primary {
+      background: linear-gradient(135deg, #f3f6fb, #9fc1e4);
+      color: #0b1118;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+    }
+
     .btn-secondary {
       background: white;
       color: var(--primary);
       border: 1px solid rgba(28, 48, 65, 0.08);
+    }
+
+    body.dark .btn-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.08);
+      color: var(--primary);
     }
 
     .hero-mini {
@@ -275,6 +362,13 @@
         linear-gradient(180deg, rgba(255,255,255,0.95), rgba(238,244,250,0.95));
     }
 
+    body.dark .visual-card {
+      background:
+        radial-gradient(circle at 85% 18%, rgba(133, 184, 234, 0.12), transparent 24%),
+        radial-gradient(circle at 12% 80%, rgba(79, 140, 201, 0.08), transparent 24%),
+        linear-gradient(180deg, rgba(15, 20, 30, 0.95), rgba(12, 17, 25, 0.95));
+    }
+
     .visual-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -288,6 +382,13 @@
       border-radius: 24px;
       padding: 18px;
       box-shadow: 0 12px 26px rgba(28, 48, 65, 0.08);
+      transition: 0.25s ease;
+    }
+
+    body.dark .panel {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255, 255, 255, 0.08);
+      box-shadow: none;
     }
 
     .panel.large {
@@ -332,6 +433,12 @@
       border-radius: 18px;
       background: linear-gradient(180deg, #f8fbff, #eef4fb);
       border: 1px solid rgba(28, 48, 65, 0.05);
+      transition: 0.25s ease;
+    }
+
+    body.dark .metric-box {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255, 255, 255, 0.06);
     }
 
     .metric-box strong {
@@ -363,6 +470,12 @@
       color: var(--primary);
       font-size: 13px;
       font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    body.dark .tag {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.08);
     }
 
     .about-grid {
@@ -421,6 +534,12 @@
       box-shadow: 0 12px 24px rgba(28, 48, 65, 0.16);
     }
 
+    body.dark .timeline-dot {
+      background: linear-gradient(135deg, #f3f6fb, #9fc1e4);
+      color: #0b1118;
+      box-shadow: none;
+    }
+
     .timeline-item h4 {
       margin: 0 0 8px;
       font-size: 18px;
@@ -466,6 +585,12 @@
       background: linear-gradient(135deg, #edf4fb, #dce8f5);
       font-size: 24px;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+      transition: 0.25s ease;
+    }
+
+    body.dark .project-badge {
+      background: rgba(255,255,255,0.05);
+      box-shadow: none;
     }
 
     .project-label {
@@ -481,6 +606,11 @@
       letter-spacing: 0.04em;
       text-transform: uppercase;
       white-space: nowrap;
+      transition: 0.25s ease;
+    }
+
+    body.dark .project-label {
+      background: rgba(255,255,255,0.06);
     }
 
     .project-card h3 {
@@ -535,6 +665,13 @@
       border: 1px solid rgba(28, 48, 65, 0.08);
       border-radius: 22px;
       box-shadow: 0 14px 30px rgba(28, 48, 65, 0.06);
+      transition: 0.25s ease;
+    }
+
+    body.dark .stack-item {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.08);
+      box-shadow: none;
     }
 
     .stack-item strong {
@@ -597,6 +734,17 @@
       font-weight: 800;
       color: var(--primary);
       box-shadow: 0 10px 24px rgba(28, 48, 65, 0.06);
+      transition: 0.25s ease;
+    }
+
+    .contact-link:hover {
+      transform: translateY(-2px);
+    }
+
+    body.dark .contact-link {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.08);
+      box-shadow: none;
     }
 
     .footer {
@@ -612,6 +760,10 @@
       justify-content: space-between;
       gap: 14px;
       flex-wrap: wrap;
+    }
+
+    body.dark .footer-wrap {
+      border-top-color: rgba(255,255,255,0.08);
     }
 
     @media (max-width: 1080px) {
@@ -644,6 +796,10 @@
       }
 
       .nav-links {
+        display: flex;
+      }
+
+      .nav-links a {
         display: none;
       }
 
@@ -701,12 +857,13 @@
     <div class="container nav">
       <a href="#" class="brand">Kemal Saraç</a>
 
-      <nav class="nav-links">
+      <div class="nav-links">
         <a href="#hakkimda">Hakkımda</a>
         <a href="#projeler">Projeler</a>
         <a href="#yetenekler">Odak Alanları</a>
         <a href="#iletisim">İletişim</a>
-      </nav>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Tema değiştir">🌙</button>
+      </div>
     </div>
   </header>
 
@@ -715,7 +872,7 @@
       <div class="container hero-wrap">
         <div class="hero-card">
           <div class="hero-kicker">
-            <span class="pill">Mobil ürünler • SaaS arayüzleri • kullanıcı odaklı deneyimler</span>
+            <span class="pill">Mobil ürünler • kullanıcı odaklı deneyimler • modern arayüzler</span>
           </div>
 
           <h1 class="hero-title">
@@ -728,7 +885,7 @@
           </p>
 
           <p class="hero-text">
-            Mobil uygulamalar, SaaS panelleri ve günlük hayatı kolaylaştıran ürün fikirleri üzerinde çalışıyorum.
+            Mobil uygulamalar, yönetim panelleri ve günlük hayatı kolaylaştıran ürün fikirleri üzerinde çalışıyorum.
             Benim için iyi bir ürün sadece çalışmakla kalmamalı; aynı zamanda net, güven veren ve gerçekten kullanışlı hissettirmeli.
           </p>
 
@@ -740,7 +897,7 @@
           <div class="hero-mini">
             <div class="fact-card">
               <p class="fact-title">Odak</p>
-              <p class="fact-value">Mobile & SaaS Products</p>
+              <p class="fact-value">Mobile Products</p>
             </div>
 
             <div class="fact-card">
@@ -819,7 +976,7 @@
         <div class="about-grid">
           <div class="about-card">
             <p>
-              Ben Kemal Saraç. <span class="about-highlight">Mobil uygulamalar, SaaS ürünleri ve kullanıcı odaklı arayüzler</span>
+              Ben Kemal Saraç. <span class="about-highlight">Mobil uygulamalar, kullanıcı odaklı ürünler ve modern arayüzler</span>
               üzerine çalışıyorum. Özellikle profesyonel görünen, sade yapıda ve iş çözen ürünler geliştirmeyi seviyorum.
             </p>
 
@@ -853,9 +1010,9 @@
             <div class="timeline-item">
               <div class="timeline-dot">02</div>
               <div>
-                <h4>SaaS bakışı</h4>
+                <h4>Ürün bakışı</h4>
                 <p>
-                  Arayüzü tek başına değil; operasyon, yönetim, verimlilik ve büyüme mantığıyla birlikte ele alıyorum.
+                  Arayüzü tek başına değil; kullanım akışı, düzen, verimlilik ve gerçek ihtiyaçla birlikte ele alıyorum.
                 </p>
               </div>
             </div>
@@ -976,7 +1133,7 @@
           </div>
 
           <div class="stack-item">
-            <strong>SaaS UI / UX</strong>
+            <strong>UI / UX</strong>
             <span>Yönetim panelleri, veri gösterimi, operasyon ekranları ve profesyonel ürün dili oluşturma yaklaşımı.</span>
           </div>
 
@@ -1006,17 +1163,12 @@
               </p>
             </div>
 
-           <div class="contact-actions">
-  <a class="contact-link" href="mailto:kemalsarac20@gmail.com">E-posta</a>
-
-  <a class="contact-link" href="https://github.com/kemalsarac" target="_blank" rel="noopener noreferrer">GitHub</a>
-
-  <a class="contact-link" href="https://www.linkedin.com/in/kemalsarac" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-
-  <a class="contact-link" href="KEMALSARAC-CV.pdf" target="_blank" download>
-    CV İndir
-  </a>
-</div>
+            <div class="contact-actions">
+              <a class="contact-link" href="mailto:kemalsarac20@gmail.com">E-posta</a>
+              <a class="contact-link" href="https://github.com/kemalsarac" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a class="contact-link" href="https://www.linkedin.com/in/kemalsarac" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a class="contact-link" href="KEMALSARAC-CV.pdf" target="_blank" download>CV İndir</a>
+            </div>
           </div>
         </div>
       </div>
@@ -1026,8 +1178,26 @@
   <footer class="footer">
     <div class="container footer-wrap">
       <div>© 2026 Kemal Saraç</div>
-      <div>Mobile applications • SaaS products • user-centered interfaces</div>
+      <div>Mobile applications • product thinking • user-centered interfaces</div>
     </div>
   </footer>
+
+  <script>
+    const toggleButton = document.getElementById("theme-toggle");
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark");
+      toggleButton.textContent = "☀️";
+    }
+
+    toggleButton.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+
+      const isDark = document.body.classList.contains("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      toggleButton.textContent = isDark ? "☀️" : "🌙";
+    });
+  </script>
 </body>
 </html>
