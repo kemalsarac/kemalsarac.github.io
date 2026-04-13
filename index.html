@@ -3,34 +3,1025 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kemal Saraç</title>
+  <title>Kemal Saraç | Mobile & SaaS Developer</title>
+  <meta
+    name="description"
+    content="Kemal Saraç kişisel portfolyo sitesi. Flutter, React Native, SaaS ürünleri, mobil uygulamalar ve kullanıcı odaklı dijital ürünler."
+  />
   <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: rgba(255, 255, 255, 0.86);
+      --surface-strong: #ffffff;
+      --text: #1c3041;
+      --muted: #5f6f82;
+      --line: rgba(28, 48, 65, 0.1);
+      --primary: #1c3041;
+      --primary-soft: #eaf0f6;
+      --accent: #4f8cc9;
+      --accent-2: #85b8ea;
+      --shadow: 0 18px 45px rgba(28, 48, 65, 0.1);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #f7f8fa;
-      color: #1c3041;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+      margin: 0;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(133, 184, 234, 0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(79, 140, 201, 0.14), transparent 25%),
+        linear-gradient(180deg, #f8faff 0%, var(--bg) 100%);
+      color: var(--text);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 92px 0;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.1;
+      margin: 0 0 16px;
+      letter-spacing: -0.03em;
+    }
+
+    .section-subtitle {
+      max-width: 700px;
+      font-size: 18px;
+      line-height: 1.75;
+      color: var(--muted);
       margin: 0;
     }
-    .card {
-      background: white;
-      padding: 32px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      text-align: center;
-      max-width: 500px;
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(28, 48, 65, 0.08);
+      backdrop-filter: blur(10px);
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(28, 48, 65, 0.06);
     }
-    h1 { margin-bottom: 12px; }
-    p { margin: 0; line-height: 1.6; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(14px);
+      background: rgba(245, 247, 251, 0.78);
+      border-bottom: 1px solid rgba(28, 48, 65, 0.06);
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      padding: 11px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--muted);
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(28, 48, 65, 0.06);
+      color: var(--primary);
+    }
+
+    .hero {
+      padding: 52px 0 74px;
+    }
+
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .hero-card,
+    .visual-card,
+    .about-card,
+    .project-card,
+    .contact-card,
+    .fact-card,
+    .timeline-card {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-card {
+      padding: 42px;
+      border-radius: 34px;
+    }
+
+    .hero-kicker {
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+      color: var(--primary);
+    }
+
+    .hero-title .light {
+      font-weight: 600;
+      color: rgba(28, 48, 65, 0.62);
+    }
+
+    .hero-subtitle {
+      margin: 22px 0 0;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.25;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      font-weight: 700;
+      max-width: 760px;
+    }
+
+    .hero-text {
+      margin: 22px 0 0;
+      font-size: 18px;
+      line-height: 1.85;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 14px;
+      font-weight: 800;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #294863);
+      color: white;
+      box-shadow: 0 14px 30px rgba(28, 48, 65, 0.22);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--primary);
+      border: 1px solid rgba(28, 48, 65, 0.08);
+    }
+
+    .hero-mini {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .fact-card {
+      padding: 18px 18px 16px;
+      border-radius: 18px;
+    }
+
+    .fact-title {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .fact-value {
+      margin: 12px 0 0;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .visual-card {
+      min-height: 620px;
+      border-radius: 34px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 85% 18%, rgba(133, 184, 234, 0.26), transparent 24%),
+        radial-gradient(circle at 12% 80%, rgba(79, 140, 201, 0.15), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,0.95), rgba(238,244,250,0.95));
+    }
+
+    .visual-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      height: 100%;
+    }
+
+    .panel {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(28, 48, 65, 0.06);
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: 0 12px 26px rgba(28, 48, 65, 0.08);
+    }
+
+    .panel.large {
+      grid-column: 1 / -1;
+      min-height: 180px;
+    }
+
+    .panel-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .lines {
+      display: grid;
+      gap: 10px;
+    }
+
+    .line {
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary-soft), rgba(79, 140, 201, 0.18));
+    }
+
+    .line.w-90 { width: 90%; }
+    .line.w-75 { width: 75%; }
+    .line.w-60 { width: 60%; }
+    .line.w-45 { width: 45%; }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .metric-box {
+      padding: 16px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #f8fbff, #eef4fb);
+      border: 1px solid rgba(28, 48, 65, 0.05);
+    }
+
+    .metric-box strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .metric-box span {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: white;
+      border: 1px solid rgba(28, 48, 65, 0.08);
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
+      margin-top: 40px;
+    }
+
+    .about-card {
+      padding: 34px;
+      border-radius: var(--radius-xl);
+    }
+
+    .about-card p {
+      margin: 0 0 18px;
+      font-size: 18px;
+      line-height: 1.85;
+      color: var(--muted);
+    }
+
+    .about-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-highlight {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .timeline-card {
+      padding: 28px;
+      border-radius: var(--radius-xl);
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .timeline-dot {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--primary), #2d516d);
+      color: white;
+      font-weight: 800;
+      font-size: 14px;
+      box-shadow: 0 12px 24px rgba(28, 48, 65, 0.16);
+    }
+
+    .timeline-item h4 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .timeline-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 42px;
+    }
+
+    .project-card {
+      padding: 28px;
+      border-radius: 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .project-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #edf4fb, #dce8f5);
+      font-size: 24px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+    }
+
+    .project-label {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(28, 48, 65, 0.05);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .project-card h3 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .project-card p {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.85;
+    }
+
+    .project-points {
+      display: grid;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .project-point {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .project-point::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      flex: 0 0 8px;
+      border-radius: 999px;
+      margin-top: 8px;
+      background: var(--accent);
+    }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .stack-item {
+      padding: 22px 20px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(28, 48, 65, 0.08);
+      border-radius: 22px;
+      box-shadow: 0 14px 30px rgba(28, 48, 65, 0.06);
+    }
+
+    .stack-item strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .stack-item span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .contact-wrap {
+      margin-top: 42px;
+    }
+
+    .contact-card {
+      border-radius: 34px;
+      padding: 38px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .contact-card h3 {
+      margin: 0 0 14px;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .contact-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.85;
+      max-width: 700px;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 14px;
+    }
+
+    .contact-link {
+      min-height: 54px;
+      padding: 0 20px;
+      border-radius: 16px;
+      background: white;
+      border: 1px solid rgba(28, 48, 65, 0.08);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: var(--primary);
+      box-shadow: 0 10px 24px rgba(28, 48, 65, 0.06);
+    }
+
+    .footer {
+      padding: 28px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-wrap {
+      border-top: 1px solid rgba(28, 48, 65, 0.08);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-wrap,
+      .about-grid,
+      .contact-card {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-actions {
+        justify-content: flex-start;
+      }
+
+      .stack-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-mini {
+        grid-template-columns: 1fr;
+      }
+
+      .visual-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        min-height: 74px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-card,
+      .visual-card,
+      .about-card,
+      .timeline-card,
+      .project-card,
+      .contact-card {
+        padding: 24px;
+        border-radius: 24px;
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .projects-grid,
+      .stack-grid,
+      .metric-row {
+        grid-template-columns: 1fr;
+      }
+
+      .visual-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .panel.large {
+        grid-column: auto;
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .hero-title {
+        font-size: 48px;
+      }
+
+      .section-subtitle,
+      .hero-text,
+      .about-card p,
+      .contact-card p {
+        font-size: 16px;
+      }
+
+      .project-card h3 {
+        font-size: 26px;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Merhaba, ben Kemal</h1>
-    <p>Bu benim GitHub Pages ile yayınladığım ilk sitem.</p>
-  </div>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#" class="brand">Kemal Saraç</a>
+
+      <nav class="nav-links">
+        <a href="#hakkimda">Hakkımda</a>
+        <a href="#projeler">Projeler</a>
+        <a href="#yetenekler">Odak Alanları</a>
+        <a href="#iletisim">İletişim</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-wrap">
+        <div class="hero-card">
+          <div class="hero-kicker">
+            <span class="pill">Mobil ürünler • SaaS arayüzleri • kullanıcı odaklı deneyimler</span>
+          </div>
+
+          <h1 class="hero-title">
+            Merhaba, ben Kemal.<br />
+            <span class="light">Modern dijital ürünler geliştiriyorum.</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Flutter, React Native ve web teknolojileriyle; sade, güçlü ve profesyonel görünen ürün deneyimleri oluşturmaya odaklanıyorum.
+          </p>
+
+          <p class="hero-text">
+            Mobil uygulamalar, SaaS panelleri ve günlük hayatı kolaylaştıran ürün fikirleri üzerinde çalışıyorum.
+            Benim için iyi bir ürün sadece çalışmakla kalmamalı; aynı zamanda net, güven veren ve gerçekten kullanışlı hissettirmeli.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projeler">Projeleri İncele</a>
+            <a class="btn btn-secondary" href="#iletisim">İletişime Geç</a>
+          </div>
+
+          <div class="hero-mini">
+            <div class="fact-card">
+              <p class="fact-title">Odak</p>
+              <p class="fact-value">Mobile & SaaS Products</p>
+            </div>
+
+            <div class="fact-card">
+              <p class="fact-title">Çalışma yaklaşımı</p>
+              <p class="fact-value">Sade, performanslı, kullanıcı odaklı</p>
+            </div>
+
+            <div class="fact-card">
+              <p class="fact-title">Öne çıkan alanlar</p>
+              <p class="fact-value">Flutter, React Native, arayüz tasarımı</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="visual-card">
+          <div class="visual-grid">
+            <div class="panel large">
+              <div class="panel-title">Ürün yaklaşımı</div>
+              <div class="lines">
+                <div class="line w-90"></div>
+                <div class="line w-75"></div>
+                <div class="line w-60"></div>
+              </div>
+
+              <div class="metric-row">
+                <div class="metric-box">
+                  <strong>UI</strong>
+                  <span>Temiz ve güven veren arayüzler</span>
+                </div>
+                <div class="metric-box">
+                  <strong>UX</strong>
+                  <span>Akıcı ve sade kullanım akışı</span>
+                </div>
+                <div class="metric-box">
+                  <strong>Scale</strong>
+                  <span>Büyümeye uygun ürün mantığı</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-title">Kullandığım yapı</div>
+              <div class="tag-cloud">
+                <span class="tag">Flutter</span>
+                <span class="tag">React Native</span>
+                <span class="tag">Firebase</span>
+                <span class="tag">REST API</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">PostgreSQL</span>
+              </div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-title">Ürün türleri</div>
+              <div class="tag-cloud">
+                <span class="tag">Mobil uygulamalar</span>
+                <span class="tag">Yönetim panelleri</span>
+                <span class="tag">Verimlilik ürünleri</span>
+                <span class="tag">Planlama deneyimleri</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="hakkimda" class="section">
+      <div class="container">
+        <span class="pill">Hakkımda</span>
+        <h2 class="section-title">Kendimi ürün tarafından konumlandırıyorum.</h2>
+        <p class="section-subtitle">
+          Kod yazmanın yanında, ürünün nasıl hissettirdiğiyle de ilgileniyorum.
+          Bir ekranın sadece güzel görünmesi değil, mantıklı, hızlı ve anlaşılır olması benim için önemli.
+        </p>
+
+        <div class="about-grid">
+          <div class="about-card">
+            <p>
+              Ben Kemal Saraç. <span class="about-highlight">Mobil uygulamalar, SaaS ürünleri ve kullanıcı odaklı arayüzler</span>
+              üzerine çalışıyorum. Özellikle profesyonel görünen, sade yapıda ve iş çözen ürünler geliştirmeyi seviyorum.
+            </p>
+
+            <p>
+              Flutter ve React Native ile farklı ölçeklerde uygulamalar üzerinde çalıştım.
+              Bunun yanında arka tarafta API entegrasyonları, veri akışı ve ürün mantığı tarafına da dokunuyorum.
+            </p>
+
+            <p>
+              İlgi alanım sadece klasik uygulamalarla sınırlı değil. Verimlilik, planlama, iş akışı ve
+              günlük yaşamı düzenleyen ürün fikirleri üzerinde düşünmeyi ve bunları somutlaştırmayı seviyorum.
+            </p>
+
+            <p>
+              Amacım; teknik olarak sağlam, görsel olarak güven veren ve gerçekten kullanılmak isteyen ürünler ortaya çıkarmak.
+            </p>
+          </div>
+
+          <div class="timeline-card">
+            <div class="timeline-item">
+              <div class="timeline-dot">01</div>
+              <div>
+                <h4>Mobil odaklı düşünce yapısı</h4>
+                <p>
+                  Kullanıcının doğrudan eline geçen deneyimle ilgileniyorum.
+                  Bu yüzden akıcılık, okunabilirlik ve etkileşim kalitesi benim için ilk sırada.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot">02</div>
+              <div>
+                <h4>SaaS bakışı</h4>
+                <p>
+                  Arayüzü tek başına değil; operasyon, yönetim, verimlilik ve büyüme mantığıyla birlikte ele alıyorum.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot">03</div>
+              <div>
+                <h4>Abartısız ama güçlü ürün dili</h4>
+                <p>
+                  Fazla iddialı görünen değil, güven veren ve profesyonel duran ürünler üretmeye önem veriyorum.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projeler" class="section">
+      <div class="container">
+        <span class="pill">Projeler</span>
+        <h2 class="section-title">Üzerinde çalıştığım ürün yönleri.</h2>
+        <p class="section-subtitle">
+          Her proje benim için sadece bir ekran seti değil; belirli bir problemi daha net, daha düzenli
+          ve daha kullanışlı hale getirme denemesi.
+        </p>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-top">
+              <div class="project-badge">💡</div>
+              <div class="project-label">Fikir & planlama</div>
+            </div>
+            <h3>IdeaPilot</h3>
+            <p>
+              Fikir geliştirme ve proje planlama sürecini daha net hale getirmeyi hedefleyen bir ürün yaklaşımı.
+              Kullanıcının aklındaki fikri adım adım yapılandırmasına, yol haritası oluşturmasına ve süreci takip etmesine yardımcı olur.
+            </p>
+            <div class="project-points">
+              <div class="project-point">Fikirden ürüne giden süreci daha anlaşılır hale getirme odağı</div>
+              <div class="project-point">Plan, görev ve yönlendirme mantığını tek akışta toplama yaklaşımı</div>
+              <div class="project-point">Kullanıcıya kafa karıştırmadan net ilerleme hissi verme hedefi</div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <div class="project-badge">🖥️</div>
+              <div class="project-label">Verimlilik & desktop</div>
+            </div>
+            <h3>Smart Workspace Manager</h3>
+            <p>
+              Çalışma ortamını daha kontrollü ve verimli hale getirmeye odaklanan bir masaüstü ürün fikri.
+              Sistem kaynakları, mod bazlı kullanım ve dikkat dağıtıcı unsurların yönetimi gibi alanlara yoğunlaşır.
+            </p>
+            <div class="project-points">
+              <div class="project-point">Odaklanma ve sistem yönetimini bir arada ele alan yapı</div>
+              <div class="project-point">Farklı kullanım senaryolarına göre mod mantığı kurgusu</div>
+              <div class="project-point">Performans verisini kullanıcıya sade şekilde sunma yaklaşımı</div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <div class="project-badge">📋</div>
+              <div class="project-label">Yönetim platformu</div>
+            </div>
+            <h3>YönetimX</h3>
+            <p>
+              İşletmelerin operasyon tarafını daha düzenli yönetebilmesi için kurgulanan bir platform yaklaşımı.
+              Randevu, müşteri, hizmet, satış ve günlük akış gibi parçaları tek ürün mantığı içinde toplamayı amaçlar.
+            </p>
+            <div class="project-points">
+              <div class="project-point">İşletme tarafındaki dağınık süreçleri sadeleştirme odağı</div>
+              <div class="project-point">Takip edilebilir ve görsel olarak temiz yönetim ekranları</div>
+              <div class="project-point">Günlük operasyon için daha pratik kullanım akışı kurgusu</div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <div class="project-badge">🗓️</div>
+              <div class="project-label">Kişisel yaşam yönetimi</div>
+            </div>
+            <h3>Vimora</h3>
+            <p>
+              Günlük hayatı, kişisel düzeni ve rutinleri daha anlamlı biçimde yönetmeye odaklanan bir platform fikri.
+              Planlama, takip, kişisel organizasyon ve yaşam akışını sade bir yapı içinde sunmayı hedefler.
+            </p>
+            <div class="project-points">
+              <div class="project-point">Günlük yaşamı dijital olarak daha düzenli hale getirme yaklaşımı</div>
+              <div class="project-point">Kişisel yönetim araçlarını tek çatı altında toplama fikri</div>
+              <div class="project-point">Sade, yormayan ve gerçekten kullanılabilir deneyim odağı</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="yetenekler" class="section">
+      <div class="container">
+        <span class="pill">Odak alanları</span>
+        <h2 class="section-title">Teknik tarafı ürün bakışıyla birleştirmeyi seviyorum.</h2>
+        <p class="section-subtitle">
+          Benim için teknoloji, gösterişten çok ürün kalitesine hizmet etmeli.
+          Bu yüzden seçtiğim araçlar kadar, onları nasıl kullandığım da önemli.
+        </p>
+
+        <div class="stack-grid">
+          <div class="stack-item">
+            <strong>Flutter</strong>
+            <span>Mobil ve çoklu platform ürünlerinde temiz arayüzler, akıcı deneyimler ve düzenli yapı kurma odağı.</span>
+          </div>
+
+          <div class="stack-item">
+            <strong>React Native</strong>
+            <span>Hızlı ürün geliştirme, modern mobil deneyim ve daha esnek ürün doğrulama süreçleri için güçlü bir alan.</span>
+          </div>
+
+          <div class="stack-item">
+            <strong>SaaS UI / UX</strong>
+            <span>Yönetim panelleri, veri gösterimi, operasyon ekranları ve profesyonel ürün dili oluşturma yaklaşımı.</span>
+          </div>
+
+          <div class="stack-item">
+            <strong>API & Product Logic</strong>
+            <span>Veri akışı, entegrasyon mantığı, kullanıcı senaryoları ve ürünün gerçek hayatta çalışmasını sağlayan yapı.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="iletisim" class="section">
+      <div class="container">
+        <span class="pill">İletişim</span>
+        <h2 class="section-title">Bir fikir, ürün veya proje konuşabiliriz.</h2>
+        <p class="section-subtitle">
+          Yeni bir ürün geliştirmek, mevcut bir fikri toparlamak ya da profesyonel görünen bir mobil deneyim oluşturmak istiyorsan bana ulaşabilirsin.
+        </p>
+
+        <div class="contact-wrap">
+          <div class="contact-card">
+            <div>
+              <h3>Birlikte iyi görünen ve işe yarayan ürünler çıkaralım.</h3>
+              <p>
+                İster mobil uygulama fikri olsun, ister yönetim paneli, ister günlük hayatı kolaylaştıran yeni bir ürün düşüncesi;
+                doğru yapı ve doğru deneyim tasarımıyla bunları daha güçlü hale getirmek mümkün.
+              </p>
+            </div>
+
+            <div class="contact-actions">
+              <a class="contact-link" href="mailto:kemalsarac20@gmail.com">E-posta</a>
+              <a class="contact-link" href="https://github.com/kemalsarac" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a class="contact-link" href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-wrap">
+      <div>© 2026 Kemal Saraç</div>
+      <div>Mobile applications • SaaS products • user-centered interfaces</div>
+    </div>
+  </footer>
 </body>
 </html>
